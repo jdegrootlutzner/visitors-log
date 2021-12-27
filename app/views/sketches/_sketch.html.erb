@@ -1,5 +1,8 @@
 <div id="<%= dom_id sketch %>">
-  <%= image_tag sketch.image, class: 'sketch' %>
+<% unless image.nil? %>
+    <%= image_tag sketch.image, class: 'sketch' %>
+
+<% end %>
   <p>
     <strong>Artist:</strong>
     <%= sketch.artist %>
