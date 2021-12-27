@@ -1,8 +1,7 @@
 <div id="<%= dom_id sketch %>">
-<% unless sketch.image.nil? %>
+  <% if sketch.image.attached? %>
     <%= image_tag sketch.image, class: 'sketch' %>
-
-<% end %>
+  <% end %>
   <p>
     <strong>Artist:</strong>
     <%= sketch.artist %>
