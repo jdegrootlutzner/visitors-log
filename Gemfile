@@ -21,6 +21,9 @@ end
 # aws s3 bucket gem
 gem 'aws-sdk-s3', require: false
 
+# Add tailwind css
+gem 'tailwindcss-rails'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 

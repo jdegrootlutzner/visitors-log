@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Trap;
+    src: url("/fonts/Trap-Black.woff") format("woff"), url("/public/fonts/Trap-Black.ttf")  format("truetype");
+    font-weight: 900;
+  }
+  @font-face {
+    font-family: Trap;
+    src: url("/fonts/Trap-Bold.woff") format("woff"), url("/public/fonts/Trap-Bold.ttf")  format("truetype");
+    font-weight: 700;
+  }
+
+}
+
+@layer components {
+  @keyframes animate-opacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  .animate-opacity {
+    animation-name: animate-opacity;
+    animation-duration: 2.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+  .project-nav-direction {
+    @apply font-trap font-semibold mb-4 md:mb-2 w-full text-center md:text-left;
+  }
+  .project-nav-box {
+    @apply shadow-lg rounded-sm bg-white  border border-off-black flex max-w-md md:max-w-lg mx-4  md:ml-0 md:mr-5 pt-5 pb-6;
+  }
+  .project-nav-title {
+    @apply font-trap font-bold mr-12 text-center text-2xl underline;
+  }
+  .project-nav-summary {
+    @apply mt-2 text-lg font-semibold;
+  }
+  .project-nav-details {
+    @apply mt-2 text-sm italic;
+  }
+}
+
+

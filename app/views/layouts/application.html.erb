@@ -5,12 +5,36 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <body class="relative overflow-x-hidden" >
+    <div class=" flex flex-col md:flex-row w-full overflow-visible">
+      <%= render 'layouts/nav' %>
 
-  <body>
-    <%= yield %>
+      <div>
+        <%= yield %>
+        <%= render 'layouts/projectNavigation' %>
+      </div>
+    </div> 
+
+    <script>
+      const projectNavigation = document.getElementById('project-navigation');
+      const observer = new IntersectionObserver(
+        function(entries, observer){
+            entries.forEach(entry => {
+              if(!entry.isIntersecting){
+                return;
+              }
+              entry.target.classList.toggle('animate-opacity');
+           
+            observer.unobserve(entry.target);
+          })
+      });
+      observer.observe(projectNavigation);
+    </script>
+    
   </body>
 </html>
