@@ -1,6 +1,6 @@
 class SketchesController < ApplicationController
   protect_from_forgery with: :null_session, only: %i[ create ]
-  before_action :set_sketch, only: %i[ show edit update destroy ]
+  before_action :set_sketch, only: %i[ show edit update upvote destroy ]
 
   # GET /sketches or /sketches.json
   def index
@@ -33,6 +33,19 @@ class SketchesController < ApplicationController
         format.json { render json: @sketch.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def upvote
+    respond_to do |format|
+      if @sketch.update(upvotes: @sketch.upvotes + 1)
+        format.html { redirect_to sketch_url(@sketch), notice: "Sketch was successfully updated." }
+        format.json { render :show, status: :ok, location: @sketch }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @sketch.errors, status: :unprocessable_entity }
+      end
+    end
+    @sketch.upvotes = @sketch.upvotes + 1 unless @sketch.nil?
   end
 
   # PATCH/PUT /sketches/1 or /sketches/1.json

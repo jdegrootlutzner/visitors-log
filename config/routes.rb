@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "sketches#index"
+  post '/upvote', to: 'sketches#upvote', as: :upvote
+
 end

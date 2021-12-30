@@ -1,4 +1,4 @@
-<div id="<%= dom_id sketch %>">
+<div id="<%= dom_id sketch %>" onClick="upvote(<%= sketch.id %>)">
   <% if sketch.image.attached? %>
     <%= image_tag sketch.image, class: 'sketch' %>
   <% end %>

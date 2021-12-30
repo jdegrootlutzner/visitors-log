@@ -34,6 +34,23 @@
           })
       });
       observer.observe(projectNavigation);
+      function fetchUpvote(id) {
+         fetch(`http://localhost:8000/upvote?id=${id}`, {
+        method: 'POST',
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+        }
+      
+      function upvote(id){
+       fetchUpvote(id);
+       document.getElementById(`sketch_${id}`).removeAttribute('onClick');
+      }
     </script>
     
   </body>
