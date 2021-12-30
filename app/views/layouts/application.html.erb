@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VisitorsLog</title>
+    <title>Julian DeGroot-Lutzner - Visitor Log</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -11,12 +12,16 @@
     <%= javascript_importmap_tags %>
   </head>
   <body class="relative overflow-x-hidden" >
+  <p style="color: green"><%= notice %></p>
     <div class=" flex flex-col md:flex-row w-full overflow-visible">
       <%= render 'layouts/nav' %>
 
-      <div>
+      <div class="md:w-4/5">
         <%= yield %>
+        <div class="flex flex-col lg:flex-row">
+        <article class="max-w-sm w-full ">Hello</article>
         <%= render 'layouts/projectNavigation' %>
+        </div>
       </div>
     </div> 
 
@@ -49,7 +54,13 @@
       
       function upvote(id){
        fetchUpvote(id);
-       document.getElementById(`sketch_${id}`).removeAttribute('onClick');
+       var e = document.getElementById(`sketch_${id}`);
+       e.removeAttribute('onClick');
+       e.classList.remove('upvote');
+      }
+      function removeSkeleton(element){
+        element.classList.remove('sketch');
+
       }
     </script>
     

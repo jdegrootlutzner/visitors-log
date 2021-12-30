@@ -13,6 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.sketch {
-    width: 180px;
-}

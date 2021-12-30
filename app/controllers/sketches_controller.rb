@@ -4,7 +4,8 @@ class SketchesController < ApplicationController
 
   # GET /sketches or /sketches.json
   def index
-    @sketches = Sketch.all
+    @lastSketch = Sketch.last
+    @sketches = Sketch.all.order(upvotes: :desc)
   end
 
   # GET /sketches/1 or /sketches/1.json

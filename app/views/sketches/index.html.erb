@@ -1,16 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<div class="mx-4 md:mx-0">
+<h1 class="font-trap mt-14 text-4xl">Visitor Log</h1>
 
-<h2>Most Recent Sketch</h2>
- <%# <%= render %> %>
-<h2>Crowd Favorites</h2>
+<% unless @lastSketch.nil? %>
+<section class="flex justify-center w-full">
+  <div class="flex flex-col relative items-center w-full max-w-md p-8 h-96 border-2 shadow-md">
+  <%# <%= image_tag 'doodle-box-md.png', class: ' pointer-events-none hidden sm:block absolute top-0 h-full w-full px-3' %> 
+  <%# <%= image_tag 'doodle-box.png', class: 'max-w-md sm:hidden pointer-events-none absolute top-0 h-full w-full px-1' %> 
+   <% if @lastSketch.image.attached? %>
+    <%= image_tag @lastSketch.image, class: 'h-full' %>
+  <% end %>
+  <div class="flex justify-between w-full mx-2">
+    <h2>Most Recent Sketch</h2>
+    <p class="font-trap font-black text-xl">
+      <%= @lastSketch.artist %>
+    </p>
+  </div>
+  </div>
+</section>
+<% end %>
 
-<div id="sketches">
+<h2 class="font-trap text-xl font-black" >Crowd Favorites</h2>
+<p class="ml-2 mb-2 italic">(Click to Upvote)</p>
+
+<div id="sketches" class="flex flex-wrap space-x-4">
   <% @sketches.each do |sketch| %>
+    <div>
     <%= render sketch %>
     <p>
       <%= link_to "Show this sketch", sketch %>
     </p>
+    </div>
   <% end %>
 </div>
 
 <%= link_to "New sketch", new_sketch_path %>
+</div>

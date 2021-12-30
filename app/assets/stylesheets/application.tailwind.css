@@ -21,6 +21,14 @@
     from {opacity: 0;}
     to {opacity: 1;}
   }
+
+
+  .sketch {
+    @apply h-60 w-60;
+  }
+  .upvote {
+    @apply hover:border-green-400 border-2 border-white cursor-pointer transition-colors duration-300 rounded-xl;
+  }
   .animate-opacity {
     animation-name: animate-opacity;
     animation-duration: 2.5s;

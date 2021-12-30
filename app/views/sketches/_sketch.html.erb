@@ -1,15 +1,9 @@
-<div id="<%= dom_id sketch %>" onClick="upvote(<%= sketch.id %>)">
+<div class="relative">
   <% if sketch.image.attached? %>
-    <%= image_tag sketch.image, class: 'sketch' %>
+  <img id="<%= dom_id sketch %>" onClick="upvote(<%= sketch.id %>)"
+   srcset="<%=url_for(sketch.image)%> 2.5x" alt="" class="sketch upvote p-1" onLoad="removeSkeleton(this)">
   <% end %>
-  <p>
-    <strong>Artist:</strong>
+  <p class="absolute font-trap text-lg bottom-2 right-2">
     <%= sketch.artist %>
   </p>
-
-  <p>
-    <strong>Upvotes:</strong>
-    <%= sketch.upvotes %>
-  </p>
-
 </div>
