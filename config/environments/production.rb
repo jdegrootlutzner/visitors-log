@@ -91,6 +91,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Set for Devise
+  config.action_mailer.default_url_options = { host: 'https://jdegrootlutzner.herokuapp.com/'}
+
   # set allowed cors_origins for cors initializer 
   config.allowed_cors_origins = ["https://jdegrootlutzner.com/"]
 end

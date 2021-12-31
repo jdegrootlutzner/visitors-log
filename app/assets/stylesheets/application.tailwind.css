@@ -13,6 +13,24 @@
     src: url("/fonts/Trap-Bold.woff") format("woff"), url("/public/fonts/Trap-Bold.ttf")  format("truetype");
     font-weight: 700;
   }
+  @media (max-width: 767px){
+    .article p {
+      margin-left: 5px;
+    }
+  }
+  @media (min-width: 768px) {
+    .article p {
+      margin-left: 8px;
+    }
+  }
+  
+  .article h4 {
+    @apply font-semibold italic;
+  }
+
+  .article a {
+    @apply underline;
+  } 
 
 }
 

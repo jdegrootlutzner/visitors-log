@@ -18,6 +18,9 @@ group :production do
   gem 'pg'
 end
 
+# add auth to have way to delete photos
+gem 'devise'
+
 # aws s3 bucket gem
 gem 'aws-sdk-s3', require: false
 

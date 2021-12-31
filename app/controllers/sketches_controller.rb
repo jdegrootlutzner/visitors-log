@@ -1,6 +1,7 @@
 class SketchesController < ApplicationController
   protect_from_forgery with: :null_session, only: %i[ create ]
   before_action :set_sketch, only: %i[ show edit update upvote destroy ]
+  before_action :authenticate_admin!, except: %i[ index create upvote ]
 
   # GET /sketches or /sketches.json
   def index
