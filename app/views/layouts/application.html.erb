@@ -40,7 +40,9 @@
       });
       observer.observe(projectNavigation);
       function fetchUpvote(id) {
-         fetch(`https://jdegrootlutzner.herokuapp.com/upvote?id=${id}`, {
+        //fetch(`https://jdegrootlutzner.herokuapp.com/upvote?id=${id}`, {
+
+         fetch(`http://localhost:8000/upvote?id=${id}`, {
         method: 'POST',
         })
         .then(response => response.json())
@@ -51,10 +53,35 @@
           console.error('Error:', error);
         });
         }
+
+      function getFurthestSmallestLeft(e, count){
+        var prevSib = e.previousElementSibling;
+        console.log(`current ${e}`);
+        console.log(`prev: ${prevSib}`);
+        if ( (e.getAttribute('head') == 'true') || 
+             (Number(prevSib.getAttribute('upvotes')) >= count ) ){
+               console.log(e);
+          return(e);
+        }
+        else {
+          return(getFurthestSmallestLeft(prevSib, count));
+        }
+      }
       
       function upvote(id){
        fetchUpvote(id);
        var e = document.getElementById(`sketch_${id}`);
+       var newUpvotes = Number(e.getAttribute('upvotes')) + 1;
+       e.setAttribute('upvotes', newUpvotes );
+       var furthestLeft = getFurthestSmallestLeft(e, newUpvotes );
+       if ( furthestLeft != e ){
+        //  Move the sketch to its new position
+         document.getElementById('sketches').insertBefore(e, furthestLeft);
+         if( furthestLeft.getAttribute('head') == 'true' ){
+           furthestLeft.setAttribute('head', 'false');
+           e.setAttribute('head', 'true')
+         }
+       }
        e.removeAttribute('onClick');
        e.classList.remove('upvote');
       }
