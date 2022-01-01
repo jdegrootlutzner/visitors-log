@@ -3,7 +3,7 @@
   <img 
    srcset="<%=url_for(sketch.image)%> 2.5x" alt="" class="sketch p-1" onLoad="removeSkeleton(this)">
   <% end %>
-  <p class="absolute font-trap text-lg bottom-2 right-2">
-    <%= sketch.artist %>
+  <p class="absolute font-trap bottom-2 right-2 ">
+    <%= sketch.artist %>  <span class="text-sm text-generic-blue"> (♥<span class="upvotes"><%= sketch.upvotes%></span>) </span> 
   </p>
 

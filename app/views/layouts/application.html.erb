@@ -70,6 +70,7 @@
        fetchUpvote(id);
        var e = document.getElementById(`sketch_${id}`);
        var newUpvotes = Number(e.getAttribute('upvotes')) + 1;
+       e.getElementsByClassName('upvotes')[0].textContent = newUpvotes;
        e.setAttribute('upvotes', newUpvotes );
        var furthestLeft = getFurthestSmallestLeft(e, newUpvotes );
        if ( furthestLeft != e ){
