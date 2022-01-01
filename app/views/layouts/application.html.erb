@@ -40,10 +40,8 @@
       });
       observer.observe(projectNavigation);
       function fetchUpvote(id) {
-        //fetch(`https://jdegrootlutzner.herokuapp.com/upvote?id=${id}`, {
-
-         fetch(`http://localhost:8000/upvote?id=${id}`, {
-        method: 'POST',
+        fetch(`https://jdegrootlutzner.herokuapp.com/upvote?id=${id}`, {
+          method: 'POST',
         })
         .then(response => response.json())
         .then(result => {
