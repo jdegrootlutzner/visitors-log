@@ -22,7 +22,7 @@
 
 <div id="sketches" class="flex flex-wrap space-x-4">
   <% @sketches.each_with_index do |sketch, index| %>
-    <div id="<%= dom_id sketch %>" class="relative upvote" onClick="upvote(<%= sketch.id %>)" 
+    <div id="<%= dom_id sketch %>" class="relative upvote self-start" onClick="upvote(<%= sketch.id %>)" 
           upvotes="<%= sketch.upvotes %>" head='<%=(admin_signed_in?) | (index == 0) %>'>
     <%= render sketch %>
     <% if admin_signed_in? %>
